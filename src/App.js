@@ -1,21 +1,30 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import StyleGuide from './containers/StyleGuide'
+import Theme, { themes } from './themes'
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+
+    this.toggleTheme = () => {
+      this.setState(state => ({
+        theme: state.theme === themes.dark ? themes.light : themes.dark,
+      }))
+    }
+
+    this.state = {
+      theme: themes.dark,
+      toggleTheme: this.toggleTheme,
+    }
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+      <Theme.Provider value={this.state}>
+        <StyleGuide />
+      </Theme.Provider>
+    )
   }
 }
 
-export default App;
+export default App
