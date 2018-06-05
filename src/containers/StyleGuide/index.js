@@ -21,7 +21,7 @@ const StyleGuide = props => (
       </article>
       <article>
         <h2>Card</h2>
-        <Card>I'm a card</Card>
+        <Card>I am a card</Card>
       </article>
       <article>
         <h2>Card &amp; Button</h2>
